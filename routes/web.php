@@ -52,4 +52,8 @@ Route::get('email/resend', 'App\Http\Controllers\Auth\VerificationController@res
 // Auth::routes();
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+ 
+ Route::group(['middleware'=>'auth'],function(){
+    Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+ });
+ 

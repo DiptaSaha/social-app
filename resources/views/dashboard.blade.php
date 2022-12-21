@@ -1,52 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>FaceClone - The Social Network</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/style.css"/>
-        <link rel="stylesheet" href="assets/css/admin.css"/>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <style>
-            .box{
-                background: rgba(255,255,255,1);
-                padding: 10px 20px;
-                border-radius: 2px;
-                box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4);
-            }
-        </style>
-    </head>
-    <body>
-        <div class="header no-shadow">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="logo">
-                            <h1>FaceClone</h1>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <ul class="header-menu pull-right">
-                            <li><a href="#" class="">Requests</a></li>
-                            <li><a href="#" class="">Messages</a></li>
-                            <li><a href="#" class="">Notifications</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="container-fluid">
-                <div class="col-sm-3 left-sidebar">
-                    <ul>
-                        <li><a href="./dashboard.html" class="active">News Feed</a></li>
-                        <li><a href="./settings.html" class="active">Settings</a></li>
-                        <li><a href="{{route('logout')}}">Logout</a></li>
-                    </ul>
-                </div>
+      @extends('layouts.main')
+     
+            @section('center')
                 <div class="col-sm-6">
                     <div class="post col-sm-12" id="new_post">
                         <div class="row post-heading" style="background: #2d9a40;">
@@ -84,7 +39,7 @@
                         </div>
                         <div class="row post-body">
                             <div class="col-sm-12">
-This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
+                                This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
                             </div>
                         </div>
                         <div class="row post-action">
@@ -112,11 +67,11 @@ This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum
                         </div>
                         <div class="row post-body">
                             <div class="col-sm-12">
-This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
+                                    This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
 
-This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
+                                    This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
 
-This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
+                                    This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
                             </div>
                         </div>
                         <div class="row post-action">
@@ -144,7 +99,7 @@ This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum
                         </div>
                         <div class="row post-body">
                             <div class="col-sm-12">
-This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
+                                This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
                             </div>
                         </div>
                         <div class="row post-action">
@@ -172,7 +127,7 @@ This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum
                         </div>
                         <div class="row post-body">
                             <div class="col-sm-12">
-This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
+                                This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
                             </div>
                         </div>
                         <div class="row post-action">
@@ -200,7 +155,7 @@ This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum
                         </div>
                         <div class="row post-body">
                             <div class="col-sm-12">
-This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
+                                This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit.
                             </div>
                         </div>
                         <div class="row post-action">
@@ -215,86 +170,7 @@ This is the post body. Lorem Ipsum Doler sit. Lorem Ipsum Doler sit. Lorem Ipsum
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3 chat-users">
-                    <div class="row">
-                        <h3>Chat</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 chat-user online">
-                            <a href="#">
-                                <img src="assets/imgs/1.jpg" class="pull-left"/>
-                                &nbsp;
-                                Shubham Kumar
-                            </a>
-                        </div>
-                        <div class="col-sm-12 chat-user online">
-                            <a href="#">
-                                <img src="assets/imgs/2.jpg" class="pull-left"/>
-                                &nbsp;
-                                Maninder Kaur
-                            </a>
-                        </div>
-                        <div class="col-sm-12 chat-user online">
-                            <a href="#">
-                                <img src="assets/imgs/3.jpg" class="pull-left"/>
-                                &nbsp;
-                                Divyanshu Gupta
-                            </a>
-                        </div>
-                        <div class="col-sm-12 chat-user">
-                            <a href="#">
-                                <img src="assets/imgs/4.jpg" class="pull-left"/>
-                                &nbsp;
-                                Akshima
-                            </a>
-                        </div>
-                        <div class="col-sm-12 chat-user online">
-                            <a href="#">
-                                <img src="assets/imgs/5.jpg" class="pull-left"/>
-                                &nbsp;
-                                Sourabh Thakur
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer no-shadow">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        &copy; FaceClone 2021.
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-            function like(id){
-                var elem = document.getElementById("post_like_count_"+id);
-                var count = parseInt(elem.innerHTML);
-                elem.innerHTML = count+1;
-                highlight(elem);
-            }
-            function share(id){
-                var elem = document.getElementById("post_share_count_"+id);
-                var count = parseInt(elem.innerHTML);
-                elem.innerHTML = count+1;
-                highlight(elem);
-            }
-            function comment(id){
-                var elem = document.getElementById("post_comment_count_"+id);
-                var count = parseInt(elem.innerHTML);
-                elem.innerHTML = count+1;
-                highlight(elem);
-            }
-            function highlight(elem){
-                elem.style.color = "red";
-                elem.parentElement.parentElement.style.transform="scale(1.5)";
-                setTimeout(function(){
-                    elem.style.color="";
-                    elem.parentElement.parentElement.style.transform="scale(1)";
-                },300);
-            }
-        </script>
-    </body>
-</html>
+
+            @endsection
+              
+       
