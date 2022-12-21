@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,7 +52,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -65,13 +68,41 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'fname' => $data['fname'],
+            'lname' => $data['lname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
-    // public function showRegistrationForm()
-    // {
-    //     return view('welcome');
-    // }
+    public function showRegistrationForm()
+    {
+        return view('welcome');
+    }
+    public function register(Request $request){
+        $request-> validate( [
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'date'=>['required', 'numeric'],
+            'month'=>['required', 'numeric'],
+            'year'=>['required', 'numeric'],
+        ]);
+        $birthDay=strtotime($request->get('year').'-'.$request->get('month').'-'.$request->get('date'));
+        $birthDay=date('y-m-d',$birthDay);
+
+        $userInfo= array();
+
+        $userInfo['fname']=$request->get('fname');
+        $userInfo['lname']=$request->get('lname');
+        $userInfo['email']=$request->get('email');
+        $userInfo['sex']=$request->get('sex')=='male'? 1 : 0;
+        $userInfo['password']=Hash::make($request->get('password'));
+        $userInfo['bday']=$birthDay;
+
+        $user=User::create($userInfo);
+        Auth::loginUsingId($user->id);
+        return redirect()->route('dashboard');
+
+    }
 }

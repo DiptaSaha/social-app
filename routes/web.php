@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('my_home');
+Route::get('/', function () {
+    return view('welcome');
+})->name('my_home');
 
 Route::post('/login_1', function () {
     return view('login');
@@ -25,12 +25,12 @@ Route::post('/login_1', function () {
 
 // Authentication Routes...
 Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'App\Http\Controllers\Auth\LoginController@login');
-Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+Route::post('login', 'App\Http\Controllers\Auth\LoginController@login')->name('saveLogin');
+Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
 Route::get('register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'App\Http\Controllers\Auth\RegisterController@register');
+Route::post('register', 'App\Http\Controllers\Auth\RegisterController@register')->name('saveRegister');
 
 // Password Reset Routes...
 Route::get('password/reset', 'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -52,3 +52,4 @@ Route::get('email/resend', 'App\Http\Controllers\Auth\VerificationController@res
 // Auth::routes();
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
