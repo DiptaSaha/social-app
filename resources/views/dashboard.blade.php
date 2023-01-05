@@ -10,19 +10,34 @@
 
                             </div>
                         </div>
-                        <div class="row" style="padding: 10px;">
-                            <div >
-                                <textarea placeholder="Whats up?" maxlength="250"></textarea>
+                        <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row" style="padding: 10px;">
+                                <div class="form-group">
+                                    <textarea name="status" placeholder="Whats up?" maxlength="250"></textarea>
+                                    @if($errors->has('status'))
+                                    <div class="alert alert-danger">
+                                        {{$errors->first('status')}}
+                                    </div>
+                                    @endif
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <div class="pull-left">
+                                        <label class="btn btn-success"><input name="image" type="file" style="display: none;"/>Add Image</label>
+                                        @if($errors->has('image'))
+                                            <div class="alert alert-danger">
+                                                {{$errors->first('image')}}
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="pull-right">
+                                        <button class="btn btn-primary">POST</button>
+                                    </div>
+                                </div>
+                                <br>
                             </div>
-                            <br>
-                            <div class="pull-left">
-                                <label class="btn btn-success"><input name="image" type="file" style="display: none;"/>Add Image</label>
-                            </div>
-                            <div class="pull-right">
-                                <button class="btn btn-primary">POST</button>
-                            </div>
-                            <br>
-                        </div>
+                        </form>
 
                     </div>
                     <div class="post col-sm-12" id="post_1">
