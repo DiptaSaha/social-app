@@ -51,10 +51,14 @@ Route::get('email/resend', 'App\Http\Controllers\Auth\VerificationController@res
 
 // Auth::routes();
 
- Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+//  Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
  
  Route::group(['middleware'=>'auth'],function(){
     Route::get('dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
     Route::resource('posts', App\Http\Controllers\PostController::class);
+    Route::resource('profile', App\Http\Controllers\ProfileController::class);
+    Route::post('profile/edit', 'App\Http\Controllers\ProfileController@edit')->name('profile.edit');
+    Route::post('update_likes', 'App\Http\Controllers\PostController@updateLikes')->name('updateLikes');
+    Route::post('save-comment', 'App\Http\Controllers\PostController@saveComment')->name('saveComment');
  });
  

@@ -1,4 +1,10 @@
-<div class="header no-shadow">
+     @php
+     \App\Models\User::where('id',auth()->user()->id)->update([
+        'last_login'=>now()
+        ])
+
+     @endphp   
+        <div class="header no-shadow">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-4">

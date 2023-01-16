@@ -1,42 +1,28 @@
+@php
+    $users= \App\Models\User::where('id', '!=', auth()->user()->id)->get();
+    $time= now()->subMinutes(10);
+
+    $active_users= \App\Models\User::where('last_login', '>=', $time)->pluck('id')->toArray();
+@endphp
+
 <div class="col-sm-3 chat-users">
-                    <div class="row">
-                        <h3>Chat</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 chat-user online">
-                            <a href="#">
-                                <img src="assets/imgs/1.jpg" class="pull-left"/>
-                                &nbsp;
-                                Shubham Kumar
-                            </a>
-                        </div>
-                        <div class="col-sm-12 chat-user online">
-                            <a href="#">
-                                <img src="assets/imgs/2.jpg" class="pull-left"/>
-                                &nbsp;
-                                Maninder Kaur
-                            </a>
-                        </div>
-                        <div class="col-sm-12 chat-user online">
-                            <a href="#">
-                                <img src="assets/imgs/3.jpg" class="pull-left"/>
-                                &nbsp;
-                                Divyanshu Gupta
-                            </a>
-                        </div>
-                        <div class="col-sm-12 chat-user">
-                            <a href="#">
-                                <img src="assets/imgs/4.jpg" class="pull-left"/>
-                                &nbsp;
-                                Akshima
-                            </a>
-                        </div>
-                        <div class="col-sm-12 chat-user online">
-                            <a href="#">
-                                <img src="assets/imgs/5.jpg" class="pull-left"/>
-                                &nbsp;
-                                Sourabh Thakur
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+        <h3>Active Users</h3>
+    </div>
+    <div class="row">
+        @foreach($users as $user)
+        <div class="col-sm-12 chat-user
+            @if(in_array($user->id, $active_users))
+                online
+            @endif
+        ">
+            <a href="#">
+                <img src="{{asset($user->image)?? '/images/no-photo.jpg'}}" class="pull-left"/>
+                &nbsp;
+                {{$user->fname.' '.$user->lname}}
+            </a>
+        </div>
+        @endforeach
+
+    </div>
+</div>
